@@ -4,6 +4,8 @@
 
 **Final submission:** Friday 6 November 2026, 11:59 p.m. WAT (we aim to submit on the afternoon of Friday 6 November, leaving the evening as a buffer)
 
+**Key dates:** Sat 31 Oct: clean data ready (Mugisha) · Mon 2 Nov: SQL results ready (Muluka) · Tue 3 Nov: forecasts ready (Molemi) · Wed 4 Nov evening: all code finished · Thu 5 Nov: rehearsal · Fri 6 Nov: rehearsal and submit
+
 ## Our question and answer
 
 **Question:** A small shop: how much of each product will it sell in the coming weeks, and what should it buy more of?
@@ -28,6 +30,20 @@
 
 Everyone works on the restock recommendations, writes their own report section, reviews the other parts, and presents their own contribution.
 
+## Tools
+
+| Tool | What we use it for |
+|---|---|
+| **Google Colab** | Writing and running our Python notebooks |
+| **Python: pandas, NumPy** | Loading, cleaning and reshaping the data |
+| **Python: Matplotlib, Seaborn** | Charts in the notebooks |
+| **SQL (SQLite)** | Sales analysis queries |
+| **Python: scikit-learn** | The forecasting model and its evaluation (MAE, RMSE) |
+| **Power BI Desktop** | The dashboard |
+| **Google Drive** | Storing and sharing the data files |
+| **GitHub** | Storing and sharing notebooks, documents and results |
+| **WhatsApp** | Daily updates and team communication |
+
 ## How we check in
 
 - **Daily WhatsApp update.** Post once a day, whenever suits you, in three lines:
@@ -35,6 +51,12 @@ Everyone works on the restock recommendations, writes their own report section, 
     - **Next:** what you're doing next
     - **Blocked:** anything you're waiting on (or "nothing")
 - If you're blocked, say so straight away in the group. Don't wait for the next update.
+
+## Rules for the repo
+
+- Commit your own work from your own GitHub account. The commit history is our evidence for the teamwork score.
+- Don't commit large raw data files. Raw data goes in the shared Google Drive folder.
+- Never commit passwords, tokens or personal details.
 
 ![Group B workflow diagram: who passes what to whom, and who does what each day](PLAN_flow.png)
 
@@ -98,9 +120,3 @@ It's **not a copy**. It's the same folder, so we all still work on the same file
 3. Right-click **WTM-Data-Science-Group-B**.
 4. Click **Organize → Add shortcut**.
 5. Choose **My Drive**, then click **Add**.
-
-## Rules for the repo
-
-- Commit your own work from your own GitHub account. The commit history is our evidence for the teamwork score.
-- Don't commit large raw data files. Raw data goes in the shared Google Drive folder.
-- Never commit passwords, tokens or personal details.

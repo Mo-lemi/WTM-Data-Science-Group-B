@@ -7,3 +7,6 @@ DATA/
 
 # Colab / Jupyter temporary files
 .ipynb_checkpoints/
+
+# Personal task checklist (not shared)
+CHECKLIST.md

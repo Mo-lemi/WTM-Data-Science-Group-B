@@ -44,7 +44,24 @@ Many small businesses decide what to restock by guesswork. Popular products run 
 
 The data is **not stored in this repo** (the files are too large). It lives in our shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing): the original Excel file is in `data/raw/` and the clean files are in `data/processed/`. The original file can also be downloaded from the UCI link above.
 
+**Privacy:** customer IDs in the data are anonymous numbers. We don't use or publish any personal details.
+
 **What the data does not have:** stock levels and supplier delivery times. Our restock recommendations therefore use clearly stated assumptions (see [Restock recommendations](#restock-recommendations)).
+
+---
+
+## Tools
+
+| Tool | What we use it for |
+|---|---|
+| **Google Colab** | Writing and running our Python notebooks |
+| **Python: pandas, NumPy** | Loading, cleaning and reshaping the data |
+| **Python: Matplotlib, Seaborn** | Charts in the notebooks |
+| **SQL (SQLite)** | Sales analysis queries |
+| **Python: scikit-learn** | The forecasting model and its evaluation (MAE, RMSE) |
+| **Power BI Desktop** | The dashboard |
+| **Google Drive** | Storing and sharing the data files |
+| **GitHub** | Storing and sharing notebooks, documents and results |
 
 ---
 
@@ -64,31 +81,32 @@ The data is **not stored in this repo** (the files are too large). It lives in o
 | Products | All (plus picks the top 10) | Top 10 only |
 | Answers | "What happened in this shop?" | "What will happen next?" |
 
-### Hand-offs between team members
+### What gets passed along
 
-These files are saved in the shared Google Drive folder (the paths below are inside that folder). Small result files are also copied to this repo's `outputs/` folder.
+Everything is shared through the Google Drive folder.
 
-| What | From → To | Due | File |
-|---|---|---|---|
-| Clean data | Mugisha → everyone | Sat 31 Oct | `data/processed/sales_clean.csv` |
-| Weekly sales table | Mugisha → Molemi, Khadijat | Sat 31 Oct | `data/processed/weekly_sales.csv` (`week_start, StockCode, Description, quantity, revenue`) |
-| Top 10 products list | Muluka → Molemi, Khadijat | Sat 31 Oct | `outputs/sql/top_products.csv` (`StockCode, Description, total_quantity`) |
-| Query results | Muluka → Khadijat | Mon 2 Nov | `outputs/sql/*.csv` |
-| Forecasts | Molemi → Khadijat, everyone | Tue 3 Nov | `outputs/forecasts.csv` (`week_start, StockCode, actual, baseline_forecast, model_forecast`) |
+| What | From | To |
+|---|---|---|
+| Clean data | Mugisha | Everyone |
+| Top 10 products list | Muluka | Molemi, Khadijat |
+| SQL results | Muluka | Khadijat |
+| Forecasts | Molemi | Khadijat and the whole team (for restock) |
 
-**Top products rule (agreed):** the top **10** products by **total quantity sold** over the whole dataset. Muluka and Molemi use the same list.
+**Top products rule :** the top **10** products by **total quantity sold** over the whole dataset. Muluka and Molemi use the same list.
 
 ---
 
 ## Method
 
+This is our **starting plan**. Each member decides the details of their own part, and this section will be updated to describe what we actually did.
+
 ### 1. Data cleaning and EDA (Mugisha)
 
-*To be completed.* Planned checks include cancelled orders (invoice numbers starting with `C`), negative quantities, zero or negative prices, non-product codes (such as postage and manual adjustments), extreme bulk orders, and rows without a `CustomerID`. Every cleaning decision will be listed here with the reason for it and the number of rows affected.
+*To be completed.* Things worth checking include cancelled orders (invoice numbers starting with `C`), negative quantities, zero or negative prices, non-product codes (such as postage and manual adjustments), extreme bulk orders, and rows without a `CustomerID`. The cleaning decisions and the reasons for them will be listed here.
 
 ### 2. SQL sales analysis (Muluka)
 
-*To be completed.* SQLite queries for: top and slow-moving products, monthly sales trend, sales by country, ABC classification (which few products bring in most of the revenue), and the top 10 products list.
+*To be completed.* Possible questions to answer with SQL: top and slow-moving products, monthly sales trend, sales by country, which few products bring in most of the revenue, and the top 10 products list.
 
 ### 3. Demand forecasting (Molemi)
 
@@ -109,7 +127,7 @@ For each product: **forecast weekly sales × delivery time + safety buffer = reo
 
 ### 5. Dashboard (Khadijat)
 
-*To be completed.* Planned pages: (1) the whole shop's history, (2) top 10 forecasts, (3) restock recommendations.
+*To be completed.* Possible pages: (1) the whole shop's history, (2) top 10 forecasts, (3) restock recommendations.
 
 ---
 
@@ -119,6 +137,8 @@ For each product: **forecast weekly sales × delivery time + safety buffer = reo
 
 ## Limitations
 
+What our project **can't** do, or where its results should be used with care.
+
 - **About one year of data:** the model sees the Christmas peak only once, so it cannot fully learn yearly patterns.
 - **No real stock or supplier data:** restock recommendations rely on assumptions.
 - **One UK online gift shop, with many wholesale customers:** results may not transfer directly to other kinds of small businesses.
@@ -126,7 +146,9 @@ For each product: **forecast weekly sales × delivery time + safety buffer = reo
 
 ## Next steps
 
-*To be completed.*
+What we would do next with more time or more data.
+
+*To be completed at the end of the project.*
 
 ---
 
@@ -155,15 +177,17 @@ The notebooks run in **Google Colab** (or locally with Python 3).
 
 ## Repository structure
 
-| Folder / file | What's in it | Who |
-|---|---|---|
-| `notebooks/` | One Colab notebook per stage: `01_cleaning_eda.ipynb`, `02_sql_analysis.ipynb`, `03_forecasting.ipynb` | Mugisha, Muluka, Molemi |
-| `outputs/` | Small result files (top 10 products list, query results, forecasts) | Muluka, Molemi |
-| `dashboard/` | Power BI file | Khadijat |
-| `README.md` | This file | Molemi |
-| `PLAN.md`, `PLAN_flow.png` | Project plan and workflow diagram | Molemi |
+```
+WTM-Data-Science-Group-B/
+├── notebooks/        Colab notebooks, one per team member
+├── outputs/          Small result files (top 10 list, forecasts)
+├── dashboard/        Power BI file
+├── PLAN.md           Project plan
+├── PLAN_flow.png     Workflow diagram
+└── README.md         This file
+```
 
-The data itself is in the shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing), not in this repo.
+The data is **not** in this repo. It's in the shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing).
 
 ---
 
