@@ -1,1 +1,9 @@
 PLAN.pdf
+# Data files live in Google Drive, not GitHub
+*.xlsx
+data/
+Data/
+DATA/
+
+# Colab / Jupyter temporary files
+.ipynb_checkpoints/

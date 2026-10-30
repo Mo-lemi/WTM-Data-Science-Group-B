@@ -42,7 +42,7 @@ Many small businesses decide what to restock by guesswork. Popular products run 
 | **Licence** | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) |
 | **Citation** | Chen, D. (2015). *Online Retail* [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5BW33 |
 
-The raw file is **not stored in this repo** (it's too large). Download it from the UCI link above or from our shared Google Drive folder, and place it in `data/raw/`.
+The data is **not stored in this repo** (the files are too large). It lives in our shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing): the original Excel file is in `data/raw/` and the clean files are in `data/processed/`. The original file can also be downloaded from the UCI link above.
 
 **What the data does not have:** stock levels and supplier delivery times. Our restock recommendations therefore use clearly stated assumptions (see [Restock recommendations](#restock-recommendations)).
 
@@ -65,6 +65,8 @@ The raw file is **not stored in this repo** (it's too large). Download it from t
 | Answers | "What happened in this shop?" | "What will happen next?" |
 
 ### Hand-offs between team members
+
+These files are saved in the shared Google Drive folder (the paths below are inside that folder). Small result files are also copied to this repo's `outputs/` folder.
 
 | What | From → To | Due | File |
 |---|---|---|---|
@@ -144,29 +146,24 @@ The notebooks run in **Google Colab** (or locally with Python 3).
    ```
    git clone https://github.com/Mo-lemi/WTM-Data-Science-Group-B.git
    ```
-2. Download `Online Retail.xlsx` (see [The data](#the-data)) and put it in `data/raw/`.
+2. Open the [shared Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing) and add a shortcut to it in your own My Drive (right-click → **Organize → Add shortcut → My Drive**), so Colab can find the data. Alternatively, download `Online Retail.xlsx` from the UCI link in [The data](#the-data).
 3. Install the libraries (in Colab, put `!` in front):
    ```
    pip install pandas numpy scikit-learn matplotlib seaborn openpyxl
    ```
-4. Run the notebooks in order. *Notebook names to be added once they exist.*
+4. Open the notebooks in Google Colab and run them in order: `01_cleaning_eda.ipynb` → `02_sql_analysis.ipynb` → `03_forecasting.ipynb`.
 
 ## Repository structure
 
-*Planned. Will be updated as files are added.*
+| Folder / file | What's in it | Who |
+|---|---|---|
+| `notebooks/` | One Colab notebook per stage: `01_cleaning_eda.ipynb`, `02_sql_analysis.ipynb`, `03_forecasting.ipynb` | Mugisha, Muluka, Molemi |
+| `outputs/` | Small result files (top 10 products list, query results, forecasts) | Muluka, Molemi |
+| `dashboard/` | Power BI file | Khadijat |
+| `README.md` | This file | Molemi |
+| `PLAN.md`, `PLAN_flow.png` | Project plan and workflow diagram | Molemi |
 
-```
-data/
-  raw/          original Excel file (not committed)
-  processed/    clean files from Mugisha
-notebooks/      one notebook per stage
-sql/            Muluka's queries
-outputs/
-  sql/          query results (CSV)
-  forecasts.csv
-dashboard/      Power BI file
-PLAN.md         project plan
-```
+The data itself is in the shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing), not in this repo.
 
 ---
 
