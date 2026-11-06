@@ -4,7 +4,7 @@
 
 We use one year of real sales data from a small online shop to predict how much of its 10 best-selling products it will sell in the coming weeks, and turn those predictions into simple restock recommendations.
 
-> **Status:** the cleaning, SQL analysis, forecasting and restock work are finished. The Power BI dashboard and slides are in progress (sprint 26 October – 6 November 2026).
+> **Status:** Done. The cleaning, SQL analysis, forecasting, restock work, Power BI dashboard and presentation slides are finished (sprint 26 October – 6 November 2026). The full write-up is in the [project report](report/Group_B_Project_Report.pdf).
 
 **Main finding:** a simple average of the last 4 weeks forecast sales better than a random forest model, so our restock recommendations use the simple average. With the assumptions we state below, the shop should reorder 6 of its top 10 products.
 
@@ -154,7 +154,19 @@ For each product: **forecast weekly sales × delivery time + safety buffer = reo
 
 ### 5. Dashboard (Khadijat)
 
-*In progress.* Planned pages: (1) the whole shop's history, (2) top 10 forecasts, (3) restock recommendations.
+- **To view it without Power BI:** [PDF copy](dashboard/Demand_forecasting_inventory_dashboard.pdf)
+- **To explore it:** [`Demand_forecasting_inventory_dashboard.pbix`](dashboard/Demand_forecasting_inventory_dashboard.pbix) (open it with Power BI Desktop)
+- **How it was built:** [dashboard notes](dashboard/Dashboard_README.md)
+
+The dashboard has five pages:
+
+1. **Business Overview:** total revenue, monthly revenue and the top markets.
+2. **Product Performance:** the top products by units and by revenue, and products that sold only one unit.
+3. **Demand Forecasting:** actual sales against both forecasts for a chosen product, and the forecast for the next 3 weeks.
+4. **Model Evaluation:** MAE and RMSE for both methods, overall and for each product.
+5. **Stock Recommendations:** reorder points, assumed stock and how much to order.
+
+![The dashboard's Stock Recommendations page](images/dashboard_stock_recommendations.png)
 
 ---
 
@@ -232,6 +244,13 @@ What our project **can't** do, or where its results should be used with care.
 - **Christmas closure is an assumption:** it is based on what happened in one year.
 - **One UK online gift shop, with many wholesale customers:** results may not transfer directly to other kinds of small businesses.
 
+## What we learned
+
+- **Test a complex model against a simple one.** The random forest sounded stronger, but the simple average did better on our test.
+- **Check the data behind the headline numbers.** Two apparent best-sellers turned out to be huge orders that were cancelled within minutes.
+- **A good idea can still be unusable.** We planned a near-Christmas clue, then dropped it when we found no training rows in November or December.
+- **State assumptions, and test them.** Trying 9 combinations showed which restock decisions hold up and which depend on what we assumed.
+
 ## Next steps
 
 What we would do next with more time or more data.
@@ -271,15 +290,16 @@ Running a notebook overwrites its result files in the Drive folder. The librarie
 ```
 WTM-Data-Science-Group-B/
 ├── notebooks/        Colab notebooks, one per team member
-├── outputs/          Small result files (top 10 list, weekly sales, forecasts, restock)
-├── images/           Charts used in this README
-├── dashboard/        Power BI file
+├── outputs/          Small result files (weekly sales, SQL results, forecasts, restock)
+├── images/           Charts used in this README and the report
+├── report/           Project report (PDF and Word)
+├── dashboard/        Power BI file, its PDF copy and notes on how it was built
 ├── PLAN.md           Project plan
 ├── PLAN_flow.png     Workflow diagram
 └── README.md         This file
 ```
 
-The data is **not** in this repo. It's in the shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing).
+The data and the presentation slides are **not** in this repo. They're in the shared [Google Drive folder](https://drive.google.com/drive/folders/1wUqEXejA86LHFEbBc9m0CmNRy1Mccc7V?usp=sharing), in `data/` and `slides/`.
 
 ---
 
@@ -289,13 +309,14 @@ The data is **not** in this repo. It's in the shared [Google Drive folder](https
 |---|---|---|
 | Mugisha Elisa | Member 1: Data cleaning & EDA | Wrote the original cleaning and EDA notebook: data understanding, cleaning, charts, the top 10 list and the weekly sales table. |
 | Muluka Zerga Lendino | Member 2: SQL & sales analysis | Built the SQLite database and wrote the five sales queries, then re-ran them on the corrected data. |
-| Molemi Molokoane | Member 3: Demand forecasting & evaluation · Team lead | Built the forecasts and their evaluation, drafted the restock assumptions and calculation, corrected the cleaning notebook, wrote the README and led the team. |
-| Khadijat Ozohu Yusuf | Member 4: Power BI dashboard & slides | *In progress:* the dashboard and slides. |
+| Molemi Molokoane | Member 3: Demand forecasting & evaluation · Team lead | Built the forecasts and their evaluation, drafted the restock assumptions and calculation, corrected the cleaning notebook, prepared the README and report, and led the team. |
+| Khadijat Ozohu Yusuf | Member 4: Power BI dashboard & slides | Built the five-page Power BI dashboard, wrote the first version of its notes, and prepared the presentation slides. |
 
 **Where members changed each other's work:**
 
 - **Cleaning notebook:** Molemi corrected the handling of orders cancelled later, the top 10 grouping, the weekly sales table and the non-product charges. Mugisha also applied the first three of these fixes in a separate copy. The team kept Molemi's version, which used the shared Drive paths.
 - **SQL notebook:** Molemi added a cell that displays Muluka's results in the notebook, and re-ran it.
+- **Dashboard:** Molemi corrected wording and tidied the charts in Khadijat's dashboard, exported the PDF copy, and corrected the dashboard notes to match the final file.
 
 The whole team agreed the restock assumptions, and each member presents their own contribution.
 

@@ -26,7 +26,7 @@
 | Mugisha Elisa | Member 1: Data cleaning & EDA | Clean dataset, weekly sales table, EDA, data section of the report, report formatting |
 | Muluka Zerga Lendino | Member 2: SQL & sales analysis | SQLite database, sales queries, query outputs for Power BI |
 | Molemi Molokoane | Member 3: Demand forecasting & evaluation · **Team lead** | Baseline and ML forecasts, model evaluation, README, submission package, check-ins |
-| Khadijat Ozohu Yusuf | Member 4: Power BI dashboard & slides | Dashboard pages, presentation slides, backup demo video |
+| Khadijat Ozohu Yusuf | Member 4: Power BI dashboard & slides | Dashboard pages, presentation slides |
 
 Everyone works on the restock recommendations, writes their own report section, reviews the other parts, and presents their own contribution.
 
